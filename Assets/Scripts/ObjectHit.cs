@@ -3,9 +3,13 @@ using UnityEngine;
 public class ObjectHit : MonoBehaviour
 {
     
-    void OnCollisionEnter(Collision collision)
+    void OnCollisionEnter(Collision other)
     {
-        GetComponent<MeshRenderer>().material.color = Color.darkSlateBlue;
-        // Debug.Log("Something hit me!");
+        if (other.gameObject.tag == "Player")
+        {
+            GetComponent<MeshRenderer>().material.color = Color.darkSlateBlue;
+            gameObject.tag = "Hit";
+        }
+        
     }
 }
